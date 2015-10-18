@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc -p src -w",
-    "start": "live-server --open=src"
+    "start": "live-server --open=dist"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,12 @@
     "systemjs": "0.19.2"
   },
   "devDependencies": {
+    "browser-sync": "^2.8.2",
     "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.9.2",
+    "gulp-util": "^3.0.6",
     "live-server": "^0.8.1",
     "typescript": "^1.6.2"
   }

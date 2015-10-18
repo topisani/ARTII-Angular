@@ -22,7 +22,7 @@ import {Component, bootstrap, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/a
       </div>
     </div>
     `,
-    styles:[`
+    styles:[` 
     .users {list-style-type: none; margin-left: 1em; padding: 0; width: 60em;}
     .users li { cursor: pointer; position: relative; left: 0; transition: all 0.2s ease; }
     .users li:hover {color: #369; background-color: #EEE; left: 0em;}
