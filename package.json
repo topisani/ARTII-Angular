@@ -23,6 +23,7 @@
     "systemjs": "0.19.2"
   },
   "devDependencies": {
+    "gulp": "^3.9.0",
     "live-server": "^0.8.1",
     "typescript": "^1.6.2"
   }
