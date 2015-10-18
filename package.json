@@ -1,0 +1,29 @@
+{
+  "name": "ARTII-Angular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc -p src -w",
+    "start": "live-server --open=src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/topisani/ARTII-Angular.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/topisani/ARTII-Angular/issues"
+  },
+  "homepage": "https://github.com/topisani/ARTII-Angular#readme",
+  "dependencies": {
+    "angular2": "2.0.0-alpha.42",
+    "systemjs": "0.19.2"
+  },
+  "devDependencies": {
+    "live-server": "^0.8.1",
+    "typescript": "^1.6.2"
+  }
+}
