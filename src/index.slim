@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Artii
+    script src="http://cdnjs.cloudflare.com/ajax/libs/systemjs/0.18.4/system.src.js"
+    script src="https://code.angularjs.org/2.0.0-alpha.44/angular2.js"
+    script src="https://code.angularjs.org/2.0.0-alpha.44/http.dev.js"
+    script src="https://code.angularjs.org/2.0.0-alpha.44/router.dev.js"
+    
+    script src="https://code.jquery.com/jquery-2.1.4.min.js"
+    script src="/semantic/dist/semantic.min.js"
+    link href="/semantic/dist/semantic.min.css" rel="stylesheet"
+    javascript:
+      System.config({
+        packages: {'app': {defaultExtension: 'js'}}
+      });
+      System.import('app/components/app');
+  body
+    artii-app Loading ARTII...

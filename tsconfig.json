@@ -4,17 +4,14 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "isolatedModules": false,
-        "jsx": "react",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "declaration": false,
+        "declaration": true,
         "noImplicitAny": false,
         "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
-        "compileOnSave": false,
-        "sourceMaps": true,
         "outDir": "../dist/js"
     },
     "filesGlob": [
@@ -24,6 +21,10 @@
     ],
     "exclude": [],
     "files": [
-        "src/app/app.ts"
+        "src/app/components/app.ts",
+        "src/app/components/login.ts",
+        "src/app/components/topnav.ts",
+        "src/constants.ts",
+        "typings/angular2/angular2.d.ts"
     ]
 }

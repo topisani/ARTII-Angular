@@ -1,0 +1,15 @@
+.ui.top.fixed.menu
+  a.item ARTII
+  //== link_to "ARTII", root_path, class:"item"
+  //- if logged_in?
+  .ui.right.no.action.dropdown.item
+    .text Username
+      //== @current_user.username
+    i.dropdown.icon
+    .menu
+      a.item href="/logout"
+        i.sign.out.icon
+        | Log out
+  //- else
+  //  .ui.right.floated.item
+  //    a.ui.link href="#" data-open-modal="loginmodal" Log in

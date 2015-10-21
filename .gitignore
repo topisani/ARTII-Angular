@@ -1,3 +1,4 @@
 dist/
-src/**.js
+typings/
 node_modules/
+semantic/
