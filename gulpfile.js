@@ -12,7 +12,7 @@ var gulp  = require('gulp'),
     del = require("del"),
 
     input  = {
-      'html': 'src/**/*.html',
+      'misc': ['src/**/*.html', 'src/**/*.js', 'src/assets/**/*'],
       'slim': 'src/**/*.slim',
       'sass': 'src/**/*.scss',
       'typescript': 'src/**/*.ts',
@@ -55,11 +55,11 @@ gulp.task('build-js', function() {
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(output.js));
 });
-gulp.task('copy-html', function() {
-  return gulp.src(input.html)
-    .pipe(gulp.dest(output.html));
+gulp.task('copy-misc', function() {
+  return gulp.src(input.misc)
+    .pipe(gulp.dest(output.base));
 });
-gulp.task('build-html', ['copy-html'], function() {
+gulp.task('build-html', ['copy-misc'], function() {
   return gulp.src(input.slim)
     .pipe(slim(options.slim))
     .pipe(gulp.dest(output.html))
@@ -72,7 +72,7 @@ gulp.task('copy-semantic', function() {
 gulp.task('watch', ['default'], function() {
   gulp.watch(input.typescript, ['build-js']);
   gulp.watch(input.sass, ['build-css']);
-  gulp.watch(input.html, ['copy-html']);
+  gulp.watch(input.misc, ['copy-misc']);
   gulp.watch(input.slim, ['build-html']);
 });
 gulp.task('clean', function() {
