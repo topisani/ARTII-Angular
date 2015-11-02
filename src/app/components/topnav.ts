@@ -11,5 +11,10 @@ import {RouterLink, Location} from 'angular2/router';
 })
 
 export class TopNavComponent {
-
+  afterViewInit(){
+    $('.ui.dropdown').dropdown();
+    $('.ui.dropdown[class=*"no action"]').dropdown({
+      'action': 'nothing'
+    })
+  }
 }
