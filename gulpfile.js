@@ -6,6 +6,7 @@ var gulp  = require('gulp'),
     ts = require('gulp-typescript'),
     tsProject = ts.createProject('tsconfig.json'),
     sass = require('gulp-sass'),
+    concatCss = require('gulp-concat-css'),
     sourcemaps = require('gulp-sourcemaps'),
     slim = require("gulp-slim"),
     del = require("del"),
@@ -13,14 +14,17 @@ var gulp  = require('gulp'),
     input  = {
       'html': 'src/**/*.html',
       'slim': 'src/**/*.slim',
-      'sass': 'src/css/**/*.scss',
-      'typescript': 'src/**/*.ts'
+      'sass': 'src/**/*.scss',
+      'typescript': 'src/**/*.ts',
+      'semantic': 'semantic/dist/**/*'
     },
 
     output = {
+      'base': 'dist',
       'html': 'dist',
-      'css': 'dist/css',
-      'js': 'dist'
+      'css': 'css/style.css',
+      'js': 'dist',
+      'semantic': 'dist/semantic'
     },
 
     options = {
@@ -32,14 +36,15 @@ var gulp  = require('gulp'),
       }
     }
 
-gulp.task('default', ['clean', 'build-js', 'build-css', 'build-html']);
+gulp.task('default', ['clean', 'build-js', 'build-css', 'build-html', 'copy-semantic']);
 
 gulp.task('build-css', function() {
     return gulp.src(input.sass)
-        .pipe(sourcemaps.init())
         .pipe(sass(options.sass))
+        .pipe(sourcemaps.init())
+        .pipe(concatCss(output.css))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(output.css));
+        .pipe(gulp.dest(output.base));
 });
 
 gulp.task('build-js', function() {
@@ -58,6 +63,10 @@ gulp.task('build-html', ['copy-html'], function() {
   return gulp.src(input.slim)
     .pipe(slim(options.slim))
     .pipe(gulp.dest(output.html))
+})
+gulp.task('copy-semantic', function() {
+  return gulp.src(input.semantic)
+    .pipe(gulp.dest(output.semantic))
 })
 
 gulp.task('watch', ['default'], function() {

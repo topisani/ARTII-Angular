@@ -1,6 +1,6 @@
 import {HTTP_PROVIDERS, Http } from 'angular2/http';
 import {Component, View, bootstrap, FORM_DIRECTIVES, CORE_DIRECTIVES, Control} from 'angular2/angular2';
-import {API_PATHS} from '../../constants';
+import {API_PATHS} from '../constants';
 
 @Component({
   selector: 'login',
@@ -15,7 +15,10 @@ export class LoginComponent {
   result: Object
   username: Control
   password: Control
-  constructor() {
+  location: Location;
+
+  constructor(location: Location){
+    this.location = location;
     this.username = new Control();
     this.password = new Control();
   }

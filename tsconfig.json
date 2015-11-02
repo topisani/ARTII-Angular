@@ -23,8 +23,8 @@
     "files": [
         "src/app/components/app.ts",
         "src/app/components/login.ts",
+        "src/app/components/profile.ts",
         "src/app/components/topnav.ts",
-        "src/constants.ts",
-        "typings/angular2/angular2.d.ts"
+        "src/app/constants.ts"
     ]
 }
