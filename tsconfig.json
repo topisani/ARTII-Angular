@@ -22,9 +22,12 @@
     "exclude": [],
     "files": [
         "src/app/components/app.ts",
+        "src/app/components/artworks-list.ts",
         "src/app/components/login.ts",
+        "src/app/components/profile-card.ts",
         "src/app/components/profile.ts",
         "src/app/components/topnav.ts",
-        "src/app/constants.ts"
+        "src/app/constants.ts",
+        "src/app/directives/login-modal.ts"
     ]
 }

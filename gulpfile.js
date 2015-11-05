@@ -6,25 +6,34 @@ var gulp  = require('gulp'),
     ts = require('gulp-typescript'),
     tsProject = ts.createProject('tsconfig.json'),
     sass = require('gulp-sass'),
-    concatCss = require('gulp-concat-css'),
+    concat = require('gulp-concat'),
     sourcemaps = require('gulp-sourcemaps'),
     slim = require("gulp-slim"),
     del = require("del"),
 
+    copy = {
+      'src/materialize/js/bin/**/*': 'dist/js/',
+      'src/materialize/font/**/*': 'dist/font/',
+      'src/**/*.html': 'dist',
+      'src/app/**/*.js': 'dist',
+      'src/assets/**/*': 'dist/assets'
+    },
+
     input  = {
-      'misc': ['src/**/*.html', 'src/**/*.js', 'src/assets/**/*'],
+      'copy': Object.keys(copy),
       'slim': 'src/**/*.slim',
-      'sass': 'src/**/*.scss',
+      'sass': 'src/app/**/*.scss',
       'typescript': 'src/**/*.ts',
-      'semantic': 'semantic/dist/**/*'
+      'materialize': 'src/materialize/sass/materialize.scss',
+      'watchMaterial': 'src/materialize/sass/**/*'
     },
 
     output = {
-      'base': 'dist',
-      'html': 'dist',
-      'css': 'css/style.css',
-      'js': 'dist',
-      'semantic': 'dist/semantic'
+      'base': './dist',
+      'html': './dist',
+      'css': './dist/css/',
+      'js': './dist',
+      'tmp': './tmp'
     },
 
     options = {
@@ -34,17 +43,19 @@ var gulp  = require('gulp'),
       slim: {
         pretty: false
       }
-    }
+    };
 
-gulp.task('default', ['clean', 'build-js', 'build-css', 'build-html', 'copy-semantic']);
+gulp.task('default', ['clean', 'build-js', 'build-css', 'build-html', 'materialize', 'clean-tmp']);
 
 gulp.task('build-css', function() {
-    return gulp.src(input.sass)
-        .pipe(sass(options.sass))
+    gulp.src(input.sass)
+        .pipe(concat("/style.scss"))
+        .pipe(gulp.dest(output.tmp));
+    return gulp.src(output.tmp + "/style.scss")
         .pipe(sourcemaps.init())
-        .pipe(concatCss(output.css))
+        .pipe(sass(options.sass).on('error', sass.logError))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(output.base));
+        .pipe(gulp.dest(output.css));
 });
 
 gulp.task('build-js', function() {
@@ -55,26 +66,35 @@ gulp.task('build-js', function() {
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(output.js));
 });
-gulp.task('copy-misc', function() {
-  return gulp.src(input.misc)
-    .pipe(gulp.dest(output.base));
+gulp.task('copy', function() {
+  for (var key in copy) {
+      gulp.src(key).pipe(gulp.dest(copy[key]));
+  }
 });
-gulp.task('build-html', ['copy-misc'], function() {
+gulp.task('build-html', ['copy'], function() {
   return gulp.src(input.slim)
     .pipe(slim(options.slim))
     .pipe(gulp.dest(output.html))
-})
-gulp.task('copy-semantic', function() {
-  return gulp.src(input.semantic)
-    .pipe(gulp.dest(output.semantic))
 })
 
 gulp.task('watch', ['default'], function() {
   gulp.watch(input.typescript, ['build-js']);
   gulp.watch(input.sass, ['build-css']);
-  gulp.watch(input.misc, ['copy-misc']);
+  gulp.watch(input.copy, ['copy']);
   gulp.watch(input.slim, ['build-html']);
+  gulp.watch(input.watchMaterial, ['materialize'])
 });
-gulp.task('clean', function() {
-  return del([output.html + "/**/"])
+gulp.task('clean', ['clean-tmp'],function() {
+  return del([output.base])
+})
+gulp.task('clean-tmp', function() {
+  return del([output.tmp])
+})
+
+gulp.task('materialize', function() {
+  return gulp.src(input.materialize)
+    .pipe(sourcemaps.init())
+    .pipe(sass(options.sass).on('error', sass.logError))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(output.css));
 })

@@ -1,3 +1,8 @@
+// APP.CSS
+$background-colour: #F1F1F1;
+body {
+  background: $background-colour;
+}
 .below-nav {
   margin-top: 40px;
 }
@@ -5,4 +10,21 @@ top-nav {
   position: absolute;
   top: 0px;
   width: 100%;
+}
+
+// #############################
+// # Semantic UI Enhancements
+// #############################
+.image[data-src] {
+  height: 100% !important;
+  width: 100% !important;
+  background-position: center center;
+  background-size: cover;
+}
+.ui.segment[class*="no padding"] {
+  padding: 0px !important;
+}
+.ui.segment[class*="no side padding"] {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }

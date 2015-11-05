@@ -26,6 +26,11 @@ export class App {
   constructor(router: Router, location: Location) {
       this.router = router;
       this.location = location;
+  };
+  afterViewInit(){
+    $('.ui.dropdown[class*="no action"]').dropdown({
+      'action': 'nothing'
+    });
   }
 }
 

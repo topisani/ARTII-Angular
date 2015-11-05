@@ -20,12 +20,12 @@
   "homepage": "https://github.com/topisani/ARTII-Angular#readme",
   "dependencies": {
     "angular2": "2.0.0-alpha.44",
-    "semantic-ui": "^2.1.4",
     "systemjs": "0.19.2"
   },
   "devDependencies": {
     "del": "^2.0.2",
     "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
     "gulp-concat-css": "^2.2.0",
     "gulp-sass": "^2.0.4",
     "gulp-slim": "^0.3.0",

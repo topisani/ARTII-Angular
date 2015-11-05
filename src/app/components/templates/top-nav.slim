@@ -2,15 +2,15 @@
   a.item ARTII
   //== link_to "ARTII", root_path, class:"item"
   //- if logged_in?
-  .ui.right.dropdown.item
+  .ui.right.no.action.dropdown.item
     .text Username
     //== @current_user.username
     i.dropdown.icon
     .menu
-      <a class="item" [router-link]="['/Login']">
+      a.item open-loginmodal=true
         i.sign.out.icon
         | Log in
-      </a>
+
   //- else
   //  .ui.right.floated.item
   //    a.ui.link href="#" data-open-modal="loginmodal" Log in

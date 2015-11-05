@@ -1,5 +1,6 @@
 import {Component, View} from 'angular2/angular2';
-import {RouterLink, Location} from 'angular2/router';
+import {RouterLink} from 'angular2/router';
+import {LoginModal} from '../directives/login-modal';
 
 @Component({
   selector: 'top-nav'
@@ -7,14 +8,9 @@ import {RouterLink, Location} from 'angular2/router';
 
 @View({
   templateUrl: 'app/components/templates/top-nav.html',
-  directives: [RouterLink]
+  directives: [RouterLink, LoginModal]
 })
 
 export class TopNavComponent {
-  afterViewInit(){
-    $('.ui.dropdown').dropdown();
-    $('.ui.dropdown[class=*"no action"]').dropdown({
-      'action': 'nothing'
-    })
-  }
+
 }
