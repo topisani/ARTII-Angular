@@ -12,5 +12,7 @@ import {LoginModal} from '../directives/login-modal';
 })
 
 export class TopNavComponent {
-
+  afterViewInit() {
+     $(".button-collapse").sideNav();
+  }
 }

@@ -1,16 +1,26 @@
-.ui.top.fixed.menu
-  a.item ARTII
-  //== link_to "ARTII", root_path, class:"item"
-  //- if logged_in?
-  .ui.right.no.action.dropdown.item
-    .text Username
-    //== @current_user.username
-    i.dropdown.icon
-    .menu
-      a.item open-loginmodal=true
-        i.sign.out.icon
-        | Log in
+.navbar-top
+  nav
+    .nav-wrapper
+      a.button-collapse.show-on-large href="#" data-activates="slide-out"
+        i.mdi-navigation-menu
+      a.brand-logo ARTII
 
-  //- else
-  //  .ui.right.floated.item
-  //    a.ui.link href="#" data-open-modal="loginmodal" Log in
+<ul id="slide-out" class="side-nav">
+  <li><a href="#!">First Sidebar Link</a></li>
+  <li><a href="#!">Second Sidebar Link</a></li>
+  <li class="no-padding">
+    <ul class="collapsible collapsible-accordion">
+      <li>
+        <a class="collapsible-header">Dropdown<i class="mdi-navigation-arrow-drop-down"></i></a>
+        <div class="collapsible-body">
+          <ul>
+            <li><a href="#!">Firddst</a></li>
+            <li><a href="#!">Second</a></li>
+            <li><a href="#!">Third</a></li>
+            <li><a href="#!">Fourth</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>

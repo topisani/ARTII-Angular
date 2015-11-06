@@ -13,8 +13,7 @@ import {ArtworksListComponent} from './artworks-list';
 
 export class ProfileComponent {
   afterViewInit(){
-    $('.image[data-src]').each( function(){
-      $(this).css("background-image", "url('" + $(this).data("src") + "')")
-    });
+    $('.parallax').parallax();
+    $('.collapsible').collapsible();
   }
 }

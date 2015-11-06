@@ -22,10 +22,9 @@ var gulp  = require('gulp'),
     input  = {
       'copy': Object.keys(copy),
       'slim': 'src/**/*.slim',
-      'sass': 'src/app/**/*.scss',
+      'css': 'src/css/app.scss',
       'typescript': 'src/**/*.ts',
-      'materialize': 'src/materialize/sass/materialize.scss',
-      'watchMaterial': 'src/materialize/sass/**/*'
+      'sass': 'src/css/**/*'
     },
 
     output = {
@@ -45,13 +44,10 @@ var gulp  = require('gulp'),
       }
     };
 
-gulp.task('default', ['clean', 'build-js', 'build-css', 'build-html', 'materialize', 'clean-tmp']);
+gulp.task('default', ['clean', 'build-js', 'build-css', 'build-html', 'clean-tmp']);
 
 gulp.task('build-css', function() {
-    gulp.src(input.sass)
-        .pipe(concat("/style.scss"))
-        .pipe(gulp.dest(output.tmp));
-    return gulp.src(output.tmp + "/style.scss")
+    return gulp.src(input.css)
         .pipe(sourcemaps.init())
         .pipe(sass(options.sass).on('error', sass.logError))
         .pipe(sourcemaps.write())
@@ -82,7 +78,6 @@ gulp.task('watch', ['default'], function() {
   gulp.watch(input.sass, ['build-css']);
   gulp.watch(input.copy, ['copy']);
   gulp.watch(input.slim, ['build-html']);
-  gulp.watch(input.watchMaterial, ['materialize'])
 });
 gulp.task('clean', ['clean-tmp'],function() {
   return del([output.base])
@@ -91,10 +86,10 @@ gulp.task('clean-tmp', function() {
   return del([output.tmp])
 })
 
-gulp.task('materialize', function() {
-  return gulp.src(input.materialize)
-    .pipe(sourcemaps.init())
-    .pipe(sass(options.sass).on('error', sass.logError))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(output.css));
-})
+// gulp.task('materialize', function() {
+//   return gulp.src(input.materialize)
+//     .pipe(sourcemaps.init())
+//     .pipe(sass(options.sass).on('error', sass.logError))
+//     .pipe(sourcemaps.write())
+//     .pipe(gulp.dest(output.css));
+// })

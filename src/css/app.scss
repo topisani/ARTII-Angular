@@ -1,4 +1,5 @@
-@include '../materialize/sass/materialize';
+@import '../materialize/sass/materialize';
+@import 'profile';
 // APP.CSS
 .below-nav {
   margin-top: 40px;
@@ -41,6 +42,8 @@ body {
     .card-title {
       font-weight: 600;
       font-size: 34px;
-      background-color:
+      width: 100%;
+      background: transparentize(black,.5);
     }
   }
+}
